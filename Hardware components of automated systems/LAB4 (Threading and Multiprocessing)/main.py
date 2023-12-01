@@ -25,7 +25,6 @@ if __name__ == '__main__':
     print(f'single-time: {time() - start}')
 
     # THREADS WORKER
-    sys.argv.append('-process')
     workers = list()
     start = time()
     if '-thread' in sys.argv:
