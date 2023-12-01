@@ -13,7 +13,7 @@ if __name__ == '__main__':
         if param in PARAMS:
             try:
                 PARAMS[param] = float(sys.argv[n + 1])
-            except TypeError:
+            except (TypeError, ValueError):
                 PARAMS[param] = sys.argv[n + 1]
 
     # SINGLE WORKER
