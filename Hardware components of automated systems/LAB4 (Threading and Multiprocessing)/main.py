@@ -12,7 +12,7 @@ if __name__ == '__main__':
     for n, param in enumerate(sys.argv):
         if param in PARAMS:
             try:
-                PARAMS[param] = float(sys.argv[n + 1])
+                PARAMS[param] = int(sys.argv[n + 1])
             except (TypeError, ValueError):
                 PARAMS[param] = sys.argv[n + 1]
 
