@@ -9,8 +9,6 @@ from file_generator import fill
 if __name__ == '__main__':
     # PARAMS HANDLER
     PARAMS = {'--size': 2, '--suff': 'MB', '--encoding': 'latin-1', '--count': 5}
-    sys.argv.append('--size')
-    sys.argv.append('8')
     for n, param in enumerate(sys.argv):
         if param in PARAMS:
             try:
