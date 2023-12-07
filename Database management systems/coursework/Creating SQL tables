@@ -1,0 +1,75 @@
+CREATE TABLE IF NOT EXISTS `ADMIN`
+(
+`id_admin` INT NOT NULL,
+`full_name` VARCHAR(100) NOT NULL,
+primary key (`id_admin`)
+)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `CLIENT`
+(
+`id_client` INT NOT NULL,
+`full_name` VARCHAR(100)NOT NULL,
+`ip` VARCHAR(15) NOT NULL,
+`email` VARCHAR(100) NOT NULL,
+primary key (`id_client`)
+)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `DEVELOPER`
+(
+`id_developer` INT NOT NULL,
+`full_name` VARCHAR(100) NOT NULL,
+primary key (`id_developer`)
+)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `SOFTWARE`
+(
+`id_software` INT NOT NULL,
+`price` FLOAT NOT NULL,
+`versions` INT NOT NULL,
+`name` VARCHAR(100) NOT NULL,
+`description` TEXT,
+primary key (`id_software`)
+)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `ORDER`
+(
+`id_software` INT NOT NULL,
+`id_client` INT NOT NULL,
+`date_time` DATETIME NOT NULL,
+`paid` BOOL NOT NULL,
+`completed` BOOL NOT NULL,
+primary key (`id_software`, `id_client`, `date_time`),
+foreign key (`id_software`) references `SOFTWARE`(`id_software`),
+foreign key (`id_client`) references `CLIENT`(`id_client`)
+)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `DIALOG`
+(
+`id_admin` INT NOT NULL,
+`id_client` INT NOT NULL,
+4
+`date_time` DATETIME NOT NULL,
+`completed` BOOL NOT NULL,
+`messages` JSON,
+primary key (`id_admin`, `id_client`, `date_time`),
+foreign key (`id_admin`) references `ADMIN`(`id_admin`),
+foreign key (`id_client`) references `CLIENT`(`id_client`)
+)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `DEVELOPMENT`
+(
+`id_developer` INT NOT NULL,
+`id_software` INT NOT NULL,
+`date` DATE NOT NULL,
+`comments` LONGTEXT,
+primary key (`id_developer`, `id_software`, `date`),
+foreign key (`id_developer`) references `DEVELOPER`(`id_developer`),
+foreign key (`id_software`) references `SOFTWARE`(`id_software`)
+)
+ENGINE = InnoDB;
