@@ -1,11 +1,11 @@
-CREATE VIEW admin_view AS
-SELECT id_admin, full_name, gender
-FROM ADMIN;
+CREATE VIEW software_view AS
+SELECT id_software, name, version
+FROM `SOFTWARE`;
 
 CREATE VIEW client_view AS
 SELECT id_client, full_name, gender
-FROM CLIENT;
+FROM `CLIENT`;
 
 CREATE VIEW order_view AS
 SELECT id_client, id_software, date_time, comleted
-FROM ORDER;
+FROM `ORDER`;
