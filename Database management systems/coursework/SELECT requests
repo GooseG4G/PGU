@@ -1,1 +1,39 @@
+# КОД Б.1
+SELECT `id_client` , `paid`
+FROM `ORDER`;
+
+# КОД Б.2
+SELECT `id_client` , `id_admin` , `messages`
+FROM `DIALOG`
+WHERE `completed` = false;
+
+# КОД Б.3
+
+
+# КОД Б.4
+
+
+# КОД Б.5
+
+
+# КОД Б.6
+
+
+# КОД Б.7
+
+
+# КОД Б.8
+
+
+# КОД Б.9
+
+
+# КОД Б.10
+
+
+# КОД Б.11
+
+
+# КОД Б.12
+
 
