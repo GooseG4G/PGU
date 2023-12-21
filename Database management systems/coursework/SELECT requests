@@ -8,7 +8,9 @@ FROM `DIALOG`
 WHERE `completed` = false;
 
 # КОД Б.3
-
+SELECT DISTINCT `id_client` , `id_admin` , `messages`
+FROM `DIALOG`
+WHERE `completed` = false and `id_admin` = 2
 
 # КОД Б.4
 
