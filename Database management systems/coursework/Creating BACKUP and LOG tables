@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS `LOG` (
+`id` INT auto_increment PRIMARY key,
+`action` varchar(10),
+`action_time` DATETIME,
+`user` varchar(50),
+`from_id` INT,
+`full_name` varchar(50),
+`gender` varchar(10)
+);
+
+CREATE TABLE IF NOT EXISTS `BACKUP` (
+`id` INT auto_increment PRIMARY key,
+`action` varchar(10),
+`action_time` DATETIME,
+`user` varchar(50),
+`from_id` INT,
+`full_name` varchar(50),
+`gender` varchar(10)
+);
