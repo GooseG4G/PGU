@@ -48,8 +48,14 @@ WHERE tl.`id_developer` = t2.`id_developer` and t2.`id_software = t3.`id_softwar
 and t1.`gender` = 'male' and t3.`versions` > 'l'
 
 # КОД Б.11
-
+SELECT *
+FROM `CLIENT`
+WHERE `id_client` IN (SELECT `id_client` FROM `ORDER` );
 
 # КОД Б.12
-
+SELECT *
+FROM `ADMIN`
+EXCEPT
+SELECT *
+FROM `DEVELOPER`;
 
