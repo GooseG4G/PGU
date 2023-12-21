@@ -1,0 +1,57 @@
+delimiter $$
+CREATE TRIGGER `after_delete_admin`
+AFTER DELETE
+ON `ADMIN`
+FOR EACH ROW
+BEGIN
+insert into `BACKUP` (`action`, `action_time`, `user`, `from_id`, `full_name`, `gender`)
+VALUES ('DELETE', current_timestamp(), USER(), OLD.id_admin, OLD.full_name, OLD.gender);
+END $$
+delimiter ;
+
+
+delimiter $$
+CREATE TRIGGER `before_update_admin`
+BEFORE UPDATE
+ON `ADMIN`
+FOR EACH ROW
+BEGIN
+insert into `BACKUP` (`action`, `action_time`, `user`, `from_id`, `full_name`, `gender`)
+VALUES ('UPDATE', current_timestamp(), USER(), OLD.id_admin, OLD.full_name, OLD.gender);
+END $$
+delimiter ;
+
+# -------------------------------------------- #
+
+delimiter $$
+CREATE TRIGGER `after_insert_admin`
+AFTER INSERT
+ON `ADMIN`
+FOR EACH ROW
+BEGIN
+insert into `LOG` (`action`, `action_time`, `user`, `from_id`, `full_name`, `gender`)
+VALUES ('INSERT', current_timestamp(), USER(), NEW.id_admin, NEW.full_name, NEW.gender);
+ENDS $$
+delimiter ;
+
+delimiter $$
+CREATE TRIGGER `before_update_log_admin`
+BEFORE update
+ON `ADMIN`
+FOR EACH ROW
+BEGIN
+insert into `LOG` (`action`, `action_time`, `user`, `from_id`, `full_name`, `gender`)
+VALUES ('UPDATE', current_timestamp(), USER(), OLD.id_admin, OLD.full_name, OLD.gender);
+END $$
+delimiter ;
+
+delimiter $$
+CREATE TRIGGER after_delete_log_admin
+AFTER DELETE
+ON `ADMIN`
+FOR EACH ROW
+BEGIN
+insert into `LOG` (`action`, `action_time`, `user`, `from_id`, `full_name`, `gender`)
+VALUES ('UPDATE', current_timestamp(), USER(), OLD.id_admin, OLD.full_name, OLD.gender);
+ENDS$
+delimiter ;
