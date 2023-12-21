@@ -13,25 +13,39 @@ FROM `DIALOG`
 WHERE `completed` = false and `id_admin` = 2
 
 # КОД Б.4
-
+SELECT `id_client` , `id_software` , `paid` * `completed` AS `successful`
+FROM `ORDER`;
 
 # КОД Б.5
-
+SELECT `id_client`, `email`
+FROM `CLIENT`
+WHERE `emai`l LIKE '%@mail.ru%';
 
 # КОД Б.6
-
+SELECT `id_software` , `price`
+FROM `SOFTWARE`
+WHERE `price` > 20000
+ORDER BY `id_software`;
 
 # КОД Б.7
-
+SELECT COUNT(*) AS total_sell, SUM(price) AS total_price
+FROM `ORDER`;
 
 # КОД Б.8
-
+SELECT `id_software` , COUNT(*) AS total_sell, SUM(price) AS total_price
+FROM `ORDER`
+GROUP BY `id_software`;
 
 # КОД Б.9
-
+SELECT t1.`full_name`, t2.`comments`
+FROM `DEVELOPER` as t1, `DEVELOPMENT` as t2
+WHERE tl.`id_developer` = t2.`id_developer`
 
 # КОД Б.10
-
+SELECT t1.`full_name` , t2.`comments`, t3.`name`
+FROM 'DEVELOPER` as t1, `DEVELOPMENT` as t2, `SOFTWARE` as t3
+WHERE tl.`id_developer` = t2.`id_developer` and t2.`id_software = t3.`id_software`
+and t1.`gender` = 'male' and t3.`versions` > 'l'
 
 # КОД Б.11
 
