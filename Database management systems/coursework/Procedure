@@ -1,0 +1,13 @@
+delimiter $$
+CREATE PROCEDURE CreateNewClient(
+    IN client_id INT,
+    IN client_full_name VARCHAR(45),
+    IN client_email VARCHAR(45),
+    IN client_ip VARCHAR(15),
+    IN client_gender VARCHAR(6)
+)
+BEGIN
+    INSERT INTO CLIENT (id_client, full_name, email, ip, gender)
+    VALUES (client_id, client_full_name, client_email, client_ip, client_gender);
+END $$
+delimiter ;
