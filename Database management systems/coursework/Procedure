@@ -22,3 +22,10 @@ BEGIN
     LIMIT 1;
 END $$
 delimiter ;
+
+CREATE PROCEDURE show_unfinished_dialogs()
+BEGIN
+    SELECT * 
+    FROM `DIALOG`
+    WHERE comleted=false
+END;
