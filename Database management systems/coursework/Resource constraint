@@ -13,3 +13,8 @@ ALTER USER developer'@'localhost' WITH MAX_QUERIES_PER_HOUR 100;
 ALTER USER developer'@'localhost' WITH MAX_UPDATES_PER_HOUR 100;
 ALTER USER developer'@'localhost' WITH MAX_USER_CONNECTIONS 100;
 
+CREATE USER 'client'@'localhost' IDENTIFIED BY 'easypass';
+GRANT SELECT ON 21pi1_gusev.ORDER TO 'client'@'localhost';
+GRANT SELECT ON 21pi1_gusev.SOFTWARE TO 'client'@'localhost';
+GRANT USAGE ON *.* TO 'client'@'localhost' WITH MAX_QUERIES_PER_HOUR 100
+    MAX_UPDATES_PER_HOUR 25 MAX_CONNECTIONS_PER_HOUR 10;
