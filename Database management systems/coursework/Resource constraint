@@ -5,3 +5,11 @@ ALTER USER 'admin'@'localhost' WITH MAX_UPDATES_PER_HOUR 0;
 ALTER USER 'admin'@'localhost' WITH MAX_USER_CONNECTIONS 0;
 
 
+СREATE USER 'developer'@'localhost' IDENTIFIED BY 'FivEasyPass';
+GRANT SELECT ON 21pi1_gusev.developer TO 'developer'@'localhost';
+GRANT SELECT, UPDATE, INSERT ON 21pi1_gusev.development TO 'developer'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON 21pi1_gusev.software TO 'developer'@'localhost';
+ALTER USER developer'@'localhost' WITH MAX_QUERIES_PER_HOUR 100;
+ALTER USER developer'@'localhost' WITH MAX_UPDATES_PER_HOUR 100;
+ALTER USER developer'@'localhost' WITH MAX_USER_CONNECTIONS 100;
+
