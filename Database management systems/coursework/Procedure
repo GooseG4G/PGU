@@ -11,3 +11,14 @@ BEGIN
     VALUES (client_id, client_full_name, client_email, client_ip, client_gender);
 END $$
 delimiter ;
+
+
+delimiter $$
+CREATE PROCEDURE GetLatestOrder()
+BEGIN
+    SELECT id_software, id_client, date_time, paid, completed, price
+    FROM `ORDER`
+    ORDER BY date_time DESC
+    LIMIT 1;
+END $$
+delimiter ;
