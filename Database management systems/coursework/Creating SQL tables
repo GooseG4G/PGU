@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS `ADMIN`
 (
 `id_admin` INT NOT NULL,
 `full_name` VARCHAR(100) NOT NULL,
+`gender` VARCHAR(6),
 primary key (`id_admin`)
 )
 ENGINE = InnoDB;
@@ -20,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `DEVELOPER`
 (
 `id_developer` INT NOT NULL,
 `full_name` VARCHAR(100) NOT NULL,
+`gender` VARCHAR(6),
 primary key (`id_developer`)
 )
 ENGINE = InnoDB;
