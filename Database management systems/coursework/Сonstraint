@@ -1,8 +1,8 @@
-use 21pil_gusev;|
+use 21pil_gusev;
 ALTER TABLE `CLIENT` ADD CONSTRAINT unique_email constraint UNIQUE (`email`);
 
 use 21pil_gusev;
 ALTER Table `CLIENT` MODIFY COLUMN `full_name` VARCHAR(100) NOT NULL;
 
-use 21pil_gusev;|
+use 21pil_gusev;
 ALTER TABLE `CLIENT` ADD CONSTRAINT check_tempemail_constraint CHECK(`email` mot like '@tempmail');
