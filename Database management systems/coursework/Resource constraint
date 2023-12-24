@@ -1,1 +1,7 @@
+СREATE USER 'admin'@'localhost' IDENTIFIED BY 'VeryHardPass';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+ALTER USER 'admin'@'localhost' WITH MAX_QUERIES_PER_HOUR 0;
+ALTER USER 'admin'@'localhost' WITH MAX_UPDATES_PER_HOUR 0;
+ALTER USER 'admin'@'localhost' WITH MAX_USER_CONNECTIONS 0;
+
 
