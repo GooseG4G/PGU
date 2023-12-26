@@ -1,20 +1,25 @@
 СREATE USER 'admin'@'localhost' IDENTIFIED BY 'VeryHardPass';
 GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
-ALTER USER 'admin'@'localhost' WITH MAX_QUERIES_PER_HOUR 0;
-ALTER USER 'admin'@'localhost' WITH MAX_UPDATES_PER_HOUR 0;
-ALTER USER 'admin'@'localhost' WITH MAX_USER_CONNECTIONS 0;
-
 
 СREATE USER 'developer'@'localhost' IDENTIFIED BY 'FivEasyPass';
 GRANT SELECT ON 21pi1_gusev.developer TO 'developer'@'localhost';
 GRANT SELECT, UPDATE, INSERT ON 21pi1_gusev.development TO 'developer'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON 21pi1_gusev.software TO 'developer'@'localhost';
-ALTER USER developer'@'localhost' WITH MAX_QUERIES_PER_HOUR 100;
-ALTER USER developer'@'localhost' WITH MAX_UPDATES_PER_HOUR 100;
-ALTER USER developer'@'localhost' WITH MAX_USER_CONNECTIONS 100;
 
 CREATE USER 'client'@'localhost' IDENTIFIED BY 'easypass';
 GRANT SELECT ON 21pi1_gusev.ORDER TO 'client'@'localhost';
 GRANT SELECT ON 21pi1_gusev.SOFTWARE TO 'client'@'localhost';
-GRANT USAGE ON *.* TO 'client'@'localhost' WITH MAX_QUERIES_PER_HOUR 100
-    MAX_UPDATES_PER_HOUR 25 MAX_CONNECTIONS_PER_HOUR 10;
+
+# -------------------------------------------------------- #
+
+ALTER USER 'admin'@'localhost' WITH MAX_QUERIES_PER_HOUR 0;
+ALTER USER 'admin'@'localhost' WITH MAX_UPDATES_PER_HOUR 0;
+ALTER USER 'admin'@'localhost' WITH MAX_USER_CONNECTIONS 0;
+
+ALTER USER 'developer'@'localhost' WITH MAX_QUERIES_PER_HOUR 100;
+ALTER USER 'developer'@'localhost' WITH MAX_UPDATES_PER_HOUR 100;
+ALTER USER 'developer'@'localhost' WITH MAX_USER_CONNECTIONS 100;
+
+ALTER USER 'client'@'localhost' WITH MAX_QUERIES_PER_HOUR 50;
+ALTER USER 'client'@'localhost' WITH MAX_UPDATES_PER_HOUR 25;
+ALTER USER 'client'@'localhost' WITH MAX_USER_CONNECTIONS 10;
