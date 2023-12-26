@@ -21,7 +21,7 @@ DELIMITER //
 
 CREATE PROCEDURE GetAdminByCompleted()
 BEGIN
-    SELECT a.full_name, a.gender
+    SELECT a.id_admin, a.full_name, a.gender
     FROM ADMIN as a
     WHERE a.id_admin IN (
         SELECT d.id_admin
