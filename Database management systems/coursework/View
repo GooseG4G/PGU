@@ -7,3 +7,8 @@ FROM ADMIN
 UNION
 SELECT id_developer, full_name, gender
 FROM DEVELOPER;
+
+CREATE VIEW software_for_client AS
+SELECT id_software, name, price
+FROM SOFTWARE
+WHERE version > 0;
