@@ -12,3 +12,7 @@ CREATE VIEW software_for_client AS
 SELECT id_software, name, price
 FROM SOFTWARE
 WHERE version > 0;
+
+CREATE VIEW order_for_client AS
+SELECT *
+FROM ORDER;
