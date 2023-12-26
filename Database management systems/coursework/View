@@ -16,3 +16,7 @@ WHERE version > 0;
 CREATE VIEW order_for_client AS
 SELECT *
 FROM ORDER;
+
+CREATE VIEW clients AS
+SELECT id_client, full_name, gender
+FROM CLIENT;
