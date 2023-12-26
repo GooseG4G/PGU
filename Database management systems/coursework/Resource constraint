@@ -7,9 +7,9 @@ GRANT SELECT, UPDATE, INSERT ON 21pi1_gusev.development TO 'developer'@'localhos
 GRANT SELECT, INSERT, UPDATE ON 21pi1_gusev.software TO 'developer'@'localhost';
 
 CREATE USER 'client'@'localhost' IDENTIFIED BY 'easypass';
-GRANT SELECT ON 21pi1_gusev.ORDER TO 'client'@'localhost';
-GRANT SELECT ON 21pi1_gusev.SOFTWARE TO 'client'@'localhost';
-
+GRANT SELECT ON 21pi1_gusev.clients TO 'client'@'localhost';
+GRANT SELECT ON 21pi1_gusev.software_for_client TO 'client'@'localhost';
+GRANT SELECT ON 21pi1_gusev.order_for_client TO 'client'@'localhost';
 # -------------------------------------------------------- #
 
 ALTER USER 'admin'@'localhost' WITH MAX_QUERIES_PER_HOUR 0;
