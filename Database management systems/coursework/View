@@ -1,11 +1,9 @@
-CREATE VIEW software_view AS
-SELECT id_software, name, version
-FROM `SOFTWARE`;
-
-CREATE VIEW client_view AS
+CREATE VIEW everyone AS
 SELECT id_client, full_name, gender
-FROM `CLIENT`;
-
-CREATE VIEW order_view AS
-SELECT id_client, id_software, date_time, comleted
-FROM `ORDER`;
+FROM CLIENT
+UNION
+SELECT id_admin, full_name, gender
+FROM ADMIN
+UNION
+SELECT id_developer, full_name, gender
+FROM DEVELOPER;
