@@ -1,73 +1,53 @@
 #include <iostream>
-#include <vector>
+#include <bitset>
+#include <fstream>
 
 using namespace std;
 
-vector<bool> handler(int seed1, int seed2, int len) {
-    vector<bool> polinom1(17);
-    vector<bool> polinom2(111);
-    vector<bool> result(len);
+bool generate(std::bitset<17> &polinom1, std::bitset<111> &polinom2){
+    bool sum1 = polinom1[13] ^ polinom1[16];
+    bool sum2 = polinom2[100] ^ polinom2[110];
+    bool res = sum1 ^ sum2;
 
-    // Инициализация начальных битов полиномов
-    for (int i = 16; i >= 0; --i) {
-        polinom1[i] = seed1 & 1;
-        seed1 >>= 1;
-    }
+    polinom1 <<= 1;  // Сдвиг влево на 1 позицию
+    polinom1[0] = sum1;
+    polinom2 <<= 1;  // Сдвиг влево на 1 позицию
+    polinom2[0] = sum2;
 
-    for (int i = 110; i >= 0; --i) {
-        polinom2[i] = seed2 & 1;
-        seed2 >>= 1;
-    }
-
-    for (int i = 0; i < len; ++i) {
-        bool bit14 = polinom1[13];
-        bool bit17 = polinom1[16];
-        bool bit101 = polinom2[100];
-        bool bit111 = polinom2[110];
-
-        bool sum1 = bit14 ^ bit17;
-        bool sum2 = bit101 ^ bit111;
-        bool sum = sum1 ^ sum2;
-
-        // Сдвигаем биты и обновляем значения
-        for (int j = 16; j > 0; --j) {
-            polinom1[j] = polinom1[j - 1];
-        }
-        polinom1[0] = sum1;
-
-        for (int j = 110; j > 0; --j) {
-            polinom2[j] = polinom2[j - 1];
-        }
-        polinom2[0] = sum2;
-
-        result[i] = sum;
-    }
-
-    // Преобразуем биты обратно в число
-    int convert = 0;
-    for (bool bit : result) {
-        convert = (convert << 1) | bit;
-    }
-
-    cout << "Resulting number: " << convert << endl;
-    return result;
+    return res;
 }
 
 int main() {
-    while (true) {
-        int seed1, seed2, len;
+    int seed;
+    
+    cout << "Enter second seed: ";
+    cin >> seed;
+    bitset<17> polinom1(seed); 
+    
+    cout << "Enter second seed: ";
+    cin >> seed;
+    bitset<111> polinom2(seed); 
 
-        cout << "Enter the seed for first polynomial: ";
-        cin >> seed1;
+    ifstream inputFile("input.txt", ios::binary);
+    ofstream outputFile("output.bin", ios::binary);
 
-        cout << "Enter the seed for second polynomial: ";
-        cin >> seed2;
+    char c;
+    while (inputFile.get(c)) {
+        bitset<8> byte(c); // конвертация в биты
+        for (int i = 0; i < 8; i++) {
+            bool random_bit = generate(polinom1, polinom2);
+            bool original_bit = byte[i];
+            bool masked_bit = original_bit ^ random_bit;
+            byte[i] = masked_bit;
+        }
+        c = static_cast<char>(byte.to_ulong()); // конвертация в символ
+        outputFile.put(c);
+    }
 
-        cout << "Enter the number of iterations len: ";
-        cin >> len;
+    inputFile.close();
+    outputFile.close();
 
-        vector<bool> result = handler(seed1, seed2, len);
-    };
 
+    system("pause");
     return 0;
 }
